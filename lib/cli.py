@@ -8,7 +8,7 @@ def show_main_menu():
         print("2. View Employees")
         print("3. Delete Employee")
         print("4. Update Employee")
-        print("5. View Employee by ID")  # Added this line
+        print("5. View Employee by ID") 
         print("6. Add Department")
         print("7. View Departments")
         print("8. Add Certification")
@@ -18,7 +18,7 @@ def show_main_menu():
         print("12. Add Leave Record")
         print("13. View Leave Records")
         print("14. Exit")
-        choice = input("Choose an option (1-14): ")  # Updated the range to 1-14
+        choice = input("Choose an option (1-14): ") 
 
         if choice == '1':
             details = prompt_for_employee_details()
@@ -50,7 +50,7 @@ def show_main_menu():
                 print(f"Employee with ID {employee_id} updated!")
             else:
                 print(f"No employee found with ID {employee_id}.")
-        elif choice == '5':  # New menu option for viewing employee by ID
+        elif choice == '5': 
             employee_id = input("Enter Employee ID to view: ")
             view_employee_by_id(employee_id)
         elif choice == '6':
@@ -88,4 +88,3 @@ def show_main_menu():
 
 if __name__ == '__main__':
     show_main_menu()
-    

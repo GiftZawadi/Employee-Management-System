@@ -1,20 +1,45 @@
-# Phase 3 CLI+ORM Project Template
+## Employee Management
 
-## Learning Goals
+This is a CLI and ORM project by Gift Zawadi first created in June 2024
 
-- Discuss the basic directory structure of a CLI.
-- Outline the first steps in building a CLI.
+## Description
 
----
+Employee Management System is a command-line interface (CLI) application built in Python to help employers manage their employee departments and records. This application is built with Python and uses SQLite for data storage, offering a modular and scalable approach to handling employee-related data. It allows users to interact with and manipulate employee-related information conveniently from the terminal. The project demonstrates basic CRUD (Create, Read, Update, Delete) operations.
 
-## Introduction
+## Features
 
-You now have a basic idea of what constitutes a CLI. Fork and clone this lesson
-for a project template for your CLI.
+1. Employee Managment.
+Add Employee- Allows you to add a new employee to the system.
+View All Employees- Lists all employees in the system with their details.
+Delete Employee- Deletes an employee from the system based on their unique ID.
+Update Employee- Updates the details of an existing employee.
+View Employee by ID- Retrieves and displays the details of an employee by their ID.
+2. Department Management.
+Add Department- Adds a new department to the system.
+View All Departments- Lists all departments available in the system.
+3. Certification Management.
+Add Certification- Records a new certification for an employee.
+View Certifications-  Lists all certifications for a specified employee.
+4. Payroll Management.
+Add Payroll Record- Adds a payroll record for an employee.
+View Payroll Records- Lists all payroll records for a specified employee.
+5. Leave Management.
+Add Leave Record- Records a leave entry for an employee.
+View Leave Records- Lists all leave records for a specified employee.
+6. User Interface
+Text-Based CLI: The application operates through a Command-Line Interface, providing text-based interaction.
+Prompt-Driven Navigation: Users navigate through the application by selecting numbered options and entering required details as prompted.
+7. Database Management
+SQLite Integration: The application uses SQLite for data storage, ensuring data persistence across sessions.
+Data Integrity: The system ensures the integrity of data through proper foreign key relationships and constraints.
+8. Data Handling
+Modular Code: The application is organized into various modules and helper functions to maintain code clarity and ease of maintenance.
+Prompt-Based Input: Data is collected through user prompts, making the application interactive and user-friendly.
+9. Error Handling and Validation
+Error Messages: The application provides meaningful error messages for invalid inputs or operations, such as when trying to update or view a non-existent employee.
+Input Validation: Ensures that data entered meets the expected format and requirements.
 
-Take a look at the directory structure:
-
-```console
+## Directory Structure
 .
 ├── Pipfile
 ├── Pipfile.lock
@@ -22,151 +47,110 @@ Take a look at the directory structure:
 └── lib
     ├── models
     │   ├── __init__.py
-    │   └── model_1.py
+    │   ├── employee_model.py
+    │   ├── department_model.py
+    │   ├── certification_model.py
+    │   ├── payroll_record_model.py
+    │   └── leave_record_model.py
     ├── cli.py
     ├── debug.py
     └── helpers.py
-```
 
-Note: The directory also includes two files named `CONTRIBUTING.md` and
-`LICENSE.md` that are specific to Flatiron's curriculum. You can disregard or
-delete the files if you want.
+## Installation Requirements
 
----
+A computer with access to the internet. Bash terminal with pipenv installed.
 
-## Generating Your Environment
+## How to Run
 
-You might have noticed in the file structure- there's already a Pipfile!
+Setup
 
-Install any additional dependencies you know you'll need for your project by
-adding them to the `Pipfile`. Then run the commands:
+Clone the repository and navigate to project directory:
 
-```console
-pipenv install
-pipenv shell
-```
+`git@github.com:GiftZawadi/Employee-Management-System.git`
 
----
+cd 
 
-## Generating Your CLI
+`Employee-Management-System`
 
-A CLI is, simply put, an interactive script and prompts the user and performs
-operations based on user input.
+Or by downloading a ZIP file of the code. The repository, if downloaded as a .zip file will need to be extracted to your preferred location.
 
-The project template has a sample CLI in `lib/cli.py` that looks like this:
+Install the dependacies and launch shell environment
 
-```py
-# lib/cli.py
+`pipenv install`
 
-from helpers import (
-    exit_program,
-    helper_1
-)
+`pipenv shell`
 
+Initialize the database
 
-def main():
-    while True:
-        menu()
-        choice = input("> ")
-        if choice == "0":
-            exit_program()
-        elif choice == "1":
-            helper_1()
-        else:
-            print("Invalid choice")
+`python3 _init_.py`
 
+## Usage
 
-def menu():
-    print("Please select an option:")
-    print("0. Exit the program")
-    print("1. Some useful function")
+To run the apllication use
 
+`python3 lib/cli.py`
 
-if __name__ == "__main__":
-    main()
-```
+Follow the on-screen instructions to register/login, manage pets, log health records, set appointments, and view information.
 
-The helper functions are located in `lib/helpers.py`:
+## CLI Menu Options
 
-```py
-# lib/helpers.py
+--- Employee Management System ---
+1. Add Employee
+2. View Employees
+3. Delete Employee
+4. Update Employee
+5. View Employee by ID
+6. Add Department
+7. View Departments
+8. Add Certification
+9. View Certifications
+10. Add Payroll Record
+11. View Payroll Records
+12. Add Leave Record
+13. View Leave Records
+14. Exit
 
-def helper_1():
-    print("Performing useful function#1.")
+## Acknowledgement
 
 
-def exit_program():
-    print("Goodbye!")
-    exit()
-```
+# Acknowledgements
 
-You can run the template CLI with `python lib/cli.py`, or include the shebang
-and make it executable with `chmod +x`. The template CLI will ask for input, do
-some work, and accomplish some sort of task.
+This project is based on the template and curriculum provided by Flatiron School.
 
-Past that, CLIs can be whatever you'd like, as long as you follow the project
-requirements.
+## Contributing
 
-Of course, you will update `lib/cli.py` with prompts that are appropriate for
-your application, and you will update `lib/helpers.py` to replace `helper_1()`
-with a useful function based on the specific problem domain you decide to
-implement, along with adding other helper functions to the module.
+Contributions are welcome! If you find any issues or would like to suggest new features, please open an issue or create a pull request.
 
-In the `lib/models` folder, you should rename `model_1.py` with the name of a
-data model class from your specific problem domain, and add other classes to the
-folder as needed. The file `lib/models/__init__.py` has been initialized to
-create the necessary database constants. You need to add import statements to
-the various data model classes in order to use the database constants.
+## Technologies used
 
-You are also welcome to implement a different module and directory structure.
-However, your project should be well organized, modular, and follow the design
-principal of separation of concerns, which means you should separate code
-related to:
+Python.
+Python libraries and modules.
+SQL.
+SQLite.
 
-- User interface
-- Data persistence
-- Problem domain rules and logic
+## Contact
+For any questions or concerns please reach out to me at:
+[github.com/GiftZawadi] or [gzomandi07@gmail.com]
+ 
+## License
 
----
+Copyright (c) 2024 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-## Updating README.md
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-`README.md` is a Markdown file that should describe your project. You will
-replace the contents of this `README.md` file with a description of **your**
-actual project.
 
-Markdown is not a language that we cover in Flatiron's Software Engineering
-curriculum, but it's not a particularly difficult language to learn (if you've
-ever left a comment on Reddit, you might already know the basics). Refer to the
-cheat sheet in this assignments's resources for a basic guide to Markdown.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-### What Goes into a README?
 
-This README serves as a template. Replace the contents of this file to describe
-the important files in your project and describe what they do. Each Python file
-that you edit should get at least a paragraph, and each function should be
-described with a sentence or two.
 
-Describe your actual CLI script first, and with a good level of detail. The rest
-should be ordered by importance to the user. (Probably functions next, then
-models.)
 
-Screenshots and links to resources that you used throughout are also useful to
-users and collaborators, but a little more syntactically complicated. Only add
-these in if you're feeling comfortable with Markdown.
 
----
 
-## Conclusion
 
-A lot of work goes into a good CLI, but it all relies on concepts that you've
-practiced quite a bit by now. Hopefully this template and guide will get you off
-to a good start with your Phase 3 Project.
 
-Happy coding!
 
----
 
-## Resources
 
-- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
+
+
+
