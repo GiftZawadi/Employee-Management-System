@@ -1,4 +1,4 @@
-from models.employee_model import get_all_employees, add_employee, delete_employee
+from models.employee_model import get_all_employees, add_employee, delete_employee, get_employee_by_id, update_employee
 from models.department_model import get_all_departments, add_department
 from models.certification_model import add_certification, get_certifications_by_employee
 from models.payroll_model import add_payroll_record, get_payroll_records_by_employee
@@ -74,3 +74,26 @@ def list_leave_records(employee_id):
     leaves = get_leave_records_by_employee(employee_id)
     for leave in leaves:
         print(dict(leave))
+
+def prompt_for_employee_update():
+    employee_id = input("Enter the Employee ID to update: ")
+    print("Enter new details (leave blank to keep existing value):")
+
+    first_name = input("First Name: ")
+    last_name = input("Last Name: ")
+    birth_date = input("Birth Date (YYYY-MM-DD): ")
+    gender = input("Gender: ")
+    hire_date = input("Hire Date (YYYY-MM-DD): ")
+    department_id = input("Department ID: ")
+    address = input("Address: ")
+    phone_number = input("Phone Number: ")
+    email = input("Email: ")
+
+    return (employee_id, first_name, last_name, birth_date, gender, hire_date, department_id, address, phone_number, email)
+
+def view_employee_by_id(employee_id):
+    employee = get_employee_by_id(employee_id)
+    if employee:
+        print(dict(employee))
+    else:
+        print(f"No employee found with ID {employee_id}.")

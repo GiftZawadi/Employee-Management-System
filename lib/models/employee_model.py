@@ -24,3 +24,22 @@ def delete_employee(employee_id):
     cursor.execute('DELETE FROM employees WHERE employee_id = ?', (employee_id,))
     conn.commit()
     conn.close()
+
+def update_employee(employee_id, first_name, last_name, birth_date, gender, hire_date, department_id, address, phone_number, email):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('''
+        UPDATE employees
+        SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, hire_date = ?, department_id = ?, address = ?, phone_number = ?, email = ?
+        WHERE employee_id = ?
+    ''', (first_name, last_name, birth_date, gender, hire_date, department_id, address, phone_number, email, employee_id))
+    conn.commit()
+    conn.close()
+    
+def get_employee_by_id(employee_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM employees WHERE employee_id = ?', (employee_id,))
+    employee = cursor.fetchone()
+    conn.close()
+    return employee
